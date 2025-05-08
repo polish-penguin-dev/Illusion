@@ -60,7 +60,7 @@ nohup lipc-set-prop com.lab126.appmgrd start app://$APP_ID >/dev/null 2>&1 &
 
 - Distribute With `appName.sh` And `appName/` Folder!
 - To Install, Drag Both To The `documents/` Folder On Your Kindle!
-- Updating? Simply Drag & Drop, Replacing The Current Folder And/Or Scriptlet. NOTE; You Have To Reboot, Or Kill The Mesquite Process.
+- Updating? Simply Drag & Drop, Replacing The Current Folder And/Or Scriptlet. NOTE; You Have To Reboot, Reload [The Page], Or Kill The Mesquite Process (By Switching Apps; Or Other).
 - :>
 
 [Next Page](/Getting-Started/FAQ.md)
