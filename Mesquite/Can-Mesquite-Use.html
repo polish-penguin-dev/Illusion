@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Can Mesquite Use?</title>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #121212;
+      color: #EAEAEA;
+      padding: 1rem;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 8px;
+    }
+    th {
+      background-color: #333;
+      text-align: left;
+    }
+    .yes {
+      color: green;
+      font-weight: bold;
+    }
+    .no {
+      color: red;
+      font-weight: bold;
+    }
+    .unknown {
+      color: gray;
+      font-style: italic;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 1rem;
+      border: 1px solid #555;
+      background-color: #222;
+      color: white;
+      font-size: 1rem;
+    }
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #007BFF;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h1>Theoretical Mesquite Feature Support</h1>
+  <input type="text" id="search" placeholder="Search Features..." />
+  <table>
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Safari 5.0 Support</th>
+      </tr>
+    </thead>
+    <tbody id="results">
+      <tr><td colspan="2">Loading…</td></tr>
+    </tbody>
+  </table>
+
+  <script>
+    const sVersion = 5.0;
+    const tBrowser = "safari";
+    
+    function pSupport(entry) {
+      if (!entry) return "unknown";
+      if (entry === "mirror") return "unknown";
+
+      const versions = Array.isArray(entry) ? entry : [entry];
+      for (const v of versions) {
+        const version = typeof v.version_added === "string" ? parseFloat(v.version_added) : v.version_added;
+
+        if (version === true || (typeof version === "number" && version <= sVersion)) {
+          return "yes";
+        } else if (version === null || version > sVersion) {
+          return "no";
+        }
+      }
+
+      return "unknown";
+    };
+
+    function aRow(tBody, name, support) {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td>${name}</td><td class="${support}">${support}</td>`;
+      tBody.appendChild(row);
+    };
+
+    function fResults() {
+      const query = document.getElementById("search").value.toLowerCase();
+      const rows = document.querySelectorAll("#results tr");
+      rows.forEach(row => {
+        const fName = row.cells[0]?.textContent?.toLowerCase() || "";
+        if (fName.includes(query)) {
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
+        }
+      });
+    };
+
+    fetch("https://unpkg.com/@mdn/browser-compat-data/data.json")
+      .then(res => res.json())
+      .then(data => {
+        const tBody = document.getElementById("results");
+        tBody.innerHTML = "";
+
+        function tFeatures(obj, path = "") {
+          for (const [key, value] of Object.entries(obj)) {
+            if (key === "__compat") {
+              const supportEntry = value.support?.[tBrowser];
+              const support = pSupport(supportEntry);
+              aRow(tBody, path, support);
+            } else if (typeof value === "object") {
+              tFeatures(value, path ? `${path}.${key}` : key);
+            }
+          }
+        }
+
+        tFeatures(data.javascript);
+        tFeatures(data.api);
+        tFeatures(data.css);
+
+        document.getElementById("search").addEventListener("input", fResults);
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById("results").innerHTML = "<tr><td colspan='2'>Failed To Load Data!</td></tr>";
+      });
+  </script>
+</body>
+</html>
