@@ -10,7 +10,6 @@ There Are Many Different Tools You Can Make Use Of - Or Should Make Use Of - In,
 - [ScreenControl](/Assets/screencontrol-binaries.tar.gz) (Lab126); Control Your Kindle From The Web Scriptlet (Endpoint `http://192.168.X.X:6789/screen`)
 - [Mesquito SDK](/Assets/mesquito-sdk.js); Helper Functions
 - [CanIUse](https://caniuse.com/); Can I Use This Web Feature? (Kindle's Browser Is Approx. Safari 5/WebKit 533.16)
-- When Updating Your Application, Reboot, Kill Mesquite Process, Or **Reload The Page** (`window.location.reload()`, recommended) For Changes To HTML/CSS/JS To Show.
 
 For Support, Direct Message `penguins184` (That's Me!) On Discord, Or Ask Someone In The [Discord](https://discord.gg/kindle) That's Smart.
 

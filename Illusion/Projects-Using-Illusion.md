@@ -2,6 +2,7 @@
 
 - [IllusionChess](https://github.com/polish-penguin-dev/IllusionChess); Chess With Minimax Bot; Penguins184
 - [KAnki](https://github.com/crizmo/KAnki); Universal Language Flashcards; Kurizu
+- [KWordle](https://github.com/crizmo/KWordle/); Kindle Wordle; Kurizu
 
 - Want Your Project Here? DM Penguins184 On Discord!
 

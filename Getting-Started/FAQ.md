@@ -4,17 +4,9 @@
 
 A: Mesquite Is A Private Amazon 'Service' Used On The Kindle To Launch WAFs (Web Application Frameworks).
 
-## Q: Everything Is Scaled Up On Elder Kindles?
+## Q: Different Scaling On Different Models?
 
-A: This Is A Known Issue On Elder Kindles. You Can Create 2 Versions Of Your App, Not Use Static `px` Height/Width, Or Reload The Page. Theoretically;
-```js
-if (!localStorage.getItem("reloaded")) {
-  localStorage.setItem("reloaded", "true");
-  window.location.reload();
-} else {
-  localStorage.removeItem("reloaded");
-};
-```
+A: This Is A Known - And Quite Annoying - Issue. You Can Create 2 Versions Of Your App, Not Use Static `px` Height/Width (Note; `vh`, `vw` Are Unsupported), Or Reload `@media` Queries (Recommended!)
 
 ## Q: Why Is Mesquite Still Running In The Background?
 
