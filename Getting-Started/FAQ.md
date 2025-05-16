@@ -6,7 +6,7 @@ A: Mesquite Is A Private Amazon 'Service' Used On The Kindle To Launch WAFs (Web
 
 ## Q: Different Scaling On Different Models?
 
-A: This Is A Known - And Quite Annoying - Issue. You Can Create 2 Versions Of Your App, Not Use Static `px` Height/Width (Note; `vh`, `vw` Are Unsupported), Or Reload `@media` Queries (Recommended!)
+A: This Is A Known - And Quite Annoying - Issue. You Can Create 2 Versions Of Your App, Not Use Static `px` Height/Width (Note; `vh`, `vw` Are Unsupported), Or Use `@media` Queries (Recommended!)
 
 ## Q: Why Is Mesquite Still Running In The Background?
 
@@ -18,7 +18,7 @@ A: Stuck On This? Don't Be. Limited CSS Features For Flex, Grid, ... And Transfo
 
 ## Q: Why Can't I Load Characters From Different Alphabets On Elder Kindles/Mojibake?
 
-A: Don't Know, But Can Be Mitigated With ANSI Escape Codes As Done In [KAnki](https://github.com/crizmo/KAnki/tree/main).
+A: Don't Know, But Can Be Mitigated With ANSI Escape Codes/Per-Language Font As Done In [KAnki](https://github.com/crizmo/KAnki/tree/main).
 
 ## Q: Why Does Illusion Exist?
 
